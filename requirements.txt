@@ -1,0 +1,8 @@
+fastapi
+uvicorn
+groq
+pandas
+pydantic
+python-dotenv
+rapidfuzz
+tenacity
