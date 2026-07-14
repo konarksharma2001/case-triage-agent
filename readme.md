@@ -265,6 +265,25 @@ This ensures failures degrade gracefully instead of crashing the workflow.
 
 ---
 
+# Untrusted Input Handling
+
+CRM case text (`subject`, `description`) is treated as untrusted input at three points:
+
+1. **Before it reaches a prompt** — `sanitize.wrap_untrusted()` wraps any case
+   text in explicit delimiter tags (`<subject_a>...</subject_a>`) with an
+   inline instruction telling the model to treat the content as inert data,
+   never as commands — even if it looks like one ("ignore previous
+   instructions..."). Content is never string-concatenated directly into a prompt.
+2. **Before storage/display** — control characters are stripped and fields
+   are length-capped (`clean_field()`), independent of the prompt-injection
+   defense, to keep audit-log/API payloads bounded and renderable.
+3. **At the output boundary** — regardless of what the model saw, its verdict
+   can only ever be a schema-validated `DUPLICATE/NOT_DUPLICATE/UNSURE` enum.
+   Even a successful injection attempt can't produce anything the backend
+   would execute or branch on as raw text — this is the real backstop.
+
+---
+
 # Part 3 – Human Review
 
 The AI agent only produces a recommendation.

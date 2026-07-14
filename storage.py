@@ -29,6 +29,7 @@ def save_investigation(inv):
     db = load_db()
     for existing in db["investigations"]:
         if (existing["case_id_a"] == inv.case_id_a and existing["case_id_b"] == inv.case_id_b):
+            print(f"Skipped: {inv.case_id_a}/{inv.case_id_b} already investigated")
             return
     db["investigations"].append(inv.to_dict())
     save_db(db)

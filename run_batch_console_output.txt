@@ -1,0 +1,10 @@
+[1/10] CS-20358 <-> CS-60351 | Verdict: DUPLICATE | Confidence: 0.80 | Trace Steps: 6
+[2/10] CS-13442 <-> CS-56388 | Verdict: DUPLICATE | Confidence: 0.80 | Trace Steps: 5
+[3/10] CS-13442 <-> CS-71537 | Verdict: DUPLICATE | Confidence: 0.95 | Trace Steps: 6
+[4/10] CS-12050 <-> CS-23224 | Verdict: DUPLICATE | Confidence: 0.90 | Trace Steps: 6
+[5/10] CS-56388 <-> CS-71537 | Verdict: DUPLICATE | Confidence: 0.80 | Trace Steps: 6
+[6/10] CS-77561 <-> CS-90173 | Verdict: DUPLICATE | Confidence: 0.95 | Trace Steps: 6
+[7/10] CS-19742 <-> CS-34123 | Verdict: DUPLICATE | Confidence: 0.80 | Trace Steps: 6
+[8/10] CS-34123 <-> CS-79547 | Verdict: UNSURE | Confidence: 0.00 | Trace Steps: 6
+[9/10] CS-69459 <-> CS-78676 | Verdict: UNSURE | Confidence: 0.00 | Trace Steps: 1
+[10/10] CS-82856 <-> CS-82970 | Verdict: UNSURE | Confidence: 0.00 | Trace Steps: 1

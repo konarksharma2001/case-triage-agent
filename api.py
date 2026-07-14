@@ -15,7 +15,7 @@ def root():
 class DecisionRequest(BaseModel):
     decision: Literal["approve","reject","override"]
     reviewer: str
-    override_verdict: str | None = None
+    override_verdict: Literal["DUPLICATE", "NOT_DUPLICATE", "UNSURE"] | None = None
 
 
 @app.get("/investigations")

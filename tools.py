@@ -124,8 +124,6 @@ class CaseDataStore:
 
 
 # --- Tool schemas for Groq/OpenAI-style function calling ---
-# submit_verdict is included here so the whole tool registry -- investigate
-# OR conclude -- is presented to the model in one list each turn.
 
 TOOL_SCHEMAS = [
     {

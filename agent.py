@@ -253,19 +253,14 @@ def run_investigation(case_id_a: str, case_id_b: str, flagged_reasons: list,
     return inv
 
 
-
-client = Groq(api_key=os.environ["GROQ_API_KEY"])
-df = pd.read_csv("support_cases_1.csv")
-store = CaseDataStore(df)
-
-candidates = generate_candidate_pairs(df)
-multi_signal = [p for p in candidates if len(p.reasons) >= 2]
-test_pairs = multi_signal[:10]  # scope floor: at least 10 pairs
-
-results = []
-for p in test_pairs:
-    inv = run_investigation(p.case_id_a, p.case_id_b, p.reasons, store, client)
-    results.append(inv)
-    print(f"{inv.case_id_a} <-> {inv.case_id_b}: "
-            f"{inv.verdict['label']} (conf={inv.verdict['confidence']}) "
-            f"[{len(inv.trace)} trace steps]")
+if __name__ == "__main__":
+    client = Groq(api_key=os.environ["GROQ_API_KEY"])
+    df = pd.read_csv("support_cases_1.csv")
+    store = CaseDataStore(df)
+    candidates = generate_candidate_pairs(df)
+    multi_signal = [p for p in candidates if len(p.reasons) >= 2]
+    test_pairs = multi_signal[:10]
+    results = []
+    for p in test_pairs:
+        inv = run_investigation(p.case_id_a, p.case_id_b, p.reasons, store, client)
+        results.append(inv)
